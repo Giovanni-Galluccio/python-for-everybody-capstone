@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analisi Civiltà - Wikipedia Scraping</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: sans-serif; margin: 50px; background: #f4f4f9; }
+        .container { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #333; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Analisi Documentazione Civiltà</h1>
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('myChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["Civilt\u00e0", "Impero", "Regno", "Repubblica", "Storia", "Antico", "Antica", "Popolo", "Archeologia", "Islam", "Maya", "Inca", "Aztechi", "Egizi", "Romani", "Greci", "Medioevo", "Rinascimento", "Sumer", "Babilonesi", "Fenici", "Hittiti"],
+                datasets: [
+                    {
+                        label: 'Numero di Pagine (Frammentazione)',
+                        data: [78, 94, 124, 75, 142, 116, 119, 79, 44, 45, 7, 64, 1, 91, 55, 67, 55, 23, 29, 19, 36, 2],
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        yAxisID: 'y',
+                        tension: 0.3,
+                        fill: true
+                    },
+                    {
+                        label: 'Totale Parole (Densità)',
+                        data: [471308, 576572, 618291, 467438, 663690, 601349, 611025, 507536, 257045, 267553, 54863, 448158, 1905, 444364, 425077, 447500, 393427, 156707, 238418, 174371, 273888, 17994],
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        yAxisID: 'y1',
+                        tension: 0.3,
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: { display: true, text: 'Numero di Pagine' }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: { display: true, text: 'Volume di Parole' },
+                        grid: { drawOnChartArea: false }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
